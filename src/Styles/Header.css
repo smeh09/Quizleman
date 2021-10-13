@@ -1,0 +1,36 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 35px 50px;
+  box-shadow: 1px 2px 25px rgb(216, 216, 216);
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(59, 59, 59);
+}
+
+.navList {
+  display: flex;
+}
+
+.title {
+  font-size: 22px;
+  letter-spacing: 1.5px;
+}
+
+.navListItem {
+  list-style-type: none;
+}
+
+.navLink {
+  color: rgb(59, 59, 59);
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: all 0.4s;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  background: rgb(240, 240, 240);
+}

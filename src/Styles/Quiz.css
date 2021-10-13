@@ -1,0 +1,36 @@
+.quizForm {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.form {
+  width: 400px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: rgb(247, 247, 247);
+  border-radius: 5px;
+  box-shadow: 2px 2px 25px rgb(212, 212, 212);
+}
+
+#heading {
+  margin: 25px 15px;
+}
+
+.formControl {
+  margin: 5px;
+}
+
+.input {
+  margin-bottom: 30px;
+}
+
+.formRadioHeading {
+  color: black !important;
+  font-size: 22px !important;
+}
+
+.radioGroup {
+  margin-bottom: 30px;
+}
