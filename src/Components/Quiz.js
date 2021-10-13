@@ -8,6 +8,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import Input from '@mui/material/Input';
 import { useParams } from "react-router-dom";
+import { useHistory } from 'react-router';
 import "../Styles/Quiz.css";
 
 export function Quiz() {
@@ -17,10 +18,12 @@ export function Quiz() {
 
   const [ nameInput, setNameInput ] = useState("");
   const [ difficulty, setDifficulty ] = useState("easy");
+
+  const history = useHistory();
   
   function handleSubmit(e) {
     e.preventDefault();
-    window.location = `/playQuiz/${quizId}?username=${nameInput}&difficulty=${difficulty}`;
+    history.push(`/playQuiz/${quizId}?username=${nameInput}&difficulty=${difficulty}`);
   }
 
   return (
