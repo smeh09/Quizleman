@@ -10,7 +10,7 @@ import { PlayQuiz } from "./Components/PlayQuiz";
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <Router>
         <Header title="QuizleMan" />
         <Switch>

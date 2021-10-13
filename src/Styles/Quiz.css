@@ -1,6 +1,7 @@
 .quizForm {
   text-align: center;
-  margin-top: 50px;
+  display: flex;
+  height: calc(100vh - 96px);
 }
 
 .form {
@@ -12,6 +13,8 @@
   background: rgb(247, 247, 247);
   border-radius: 5px;
   box-shadow: 2px 2px 25px rgb(212, 212, 212);
+  justify-content: center;
+  align-self: center;
 }
 
 #heading {
