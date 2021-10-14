@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../Styles/Header.css";
+import FormControl from '@mui/material/FormControl';
+import Button from '@mui/material/Button';
 
 export function Header({ title }) {
+
+  const [ searchInput, setSearchInput ] = useState("")
+
+  const handleSubmit = () => {
+
+  }
+
   return (
     <header>
       <div className="leftArea">
         <div className="title">
           { title }
         </div>
-      </div>
-      <div className="rightArea">
         <nav>
           <ul className="navList">
             <li className="navListItem">
@@ -25,6 +32,14 @@ export function Header({ title }) {
             </li>
           </ul>
         </nav>
+      </div>
+      <div className="rightArea">
+      <FormControl className="formControl">
+        <div className="searchContainer">
+          <input className="searchInput" placeholder="Search" value={ searchInput } onChange={ (e) => setSearchInput(e.target.value) } />
+          <Button onClick={ (e) => handleSubmit() } disabled={ !searchInput.trim() } className="button" variant="outlined" type="submit">Search</Button>
+        </div>
+        </FormControl>
       </div>
     </header>
   );
