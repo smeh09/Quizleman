@@ -41,7 +41,7 @@ export function Header({ title }) {
       <FormControl className="formControl">
         <div className="searchContainer">
           <input className="searchInput" placeholder="Search" value={ searchInput } onChange={ (e) => setSearchInput(e.target.value) } />
-          <Button id="searchButton" onClick={ (e) => search() } disabled={ !searchInput.trim() } className="button" variant="outlined" type="submit"><i class="fa fa-search" aria-hidden="true"></i></Button>
+          <Button id="searchButton" onClick={ (e) => search() } disabled={ !searchInput.trim() } className="button" variant="outlined" type="submit"><i className="fa fa-search" aria-hidden="true"></i></Button>
         </div>
         </FormControl>
       </div>
