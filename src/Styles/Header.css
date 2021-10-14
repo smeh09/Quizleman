@@ -2,16 +2,18 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 35px 50px;
-  box-shadow: 1px 2px 25px rgb(216, 216, 216);
-  font-size: 20px;
+  padding: 16px;
+  background: rgb(245, 245, 245);
+  font-size: 17px;
   font-weight: 600;
   color: rgb(68, 68, 68);
+  font-weight: 500;
 }
 
 .leftArea {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .navList {
@@ -19,7 +21,8 @@ header {
 }
 
 .title {
-  font-size: 22px;
+  font-size: 21px;
+  font-weight: 700;
   letter-spacing: 1.5px;
 }
 
@@ -30,7 +33,7 @@ header {
 .navLink {
   color: rgb(68, 68, 68);
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 10px;
   transition: all 0.4s;
   border-radius: 5px;
   cursor: pointer;
@@ -46,21 +49,40 @@ header {
 }
 
 .searchInput {
-  padding: 7px 15px;
+  padding: 8px 15px;
   font-size: 16px;
   outline: none;
-  margin-right: 20px;
+  margin-right: 5px;
   border-radius: 5px;
-  border: 1px solid rgb(211, 211, 211);
-  font-weight: 500;
+  border: 1.2px solid rgb(207, 207, 207);
+  transition: all 0.2s;
+  font-weight: 600;
+  width: 200px;
 }
 
 .searchInput:focus {
-  outline: 3px solid rgba(192, 226, 255, 0.7);
+  outline: 3.5px solid rgba(0, 119, 255, 0.35);
 }
 
 #searchButton {
-  padding: 10px !important;
+  padding: 10px 15px !important;
+  border-radius: 5px;
+  border: 1px solid rgb(58, 58, 58);
+  background: transparent;
+  font-weight: 500;
+  color: rgb(58, 58, 58);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#searchButton:hover {
+  background: rgb(58, 58, 58);
+  color: white;
+}
+
+#searchButton:focus {
+  outline: 3.5px solid rgba(0, 0, 0, 0.35);
 }
 
 /* Media queries for responsiveness starts here */

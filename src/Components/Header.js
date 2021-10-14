@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "../Styles/Header.css";
-import FormControl from '@mui/material/FormControl';
-import Button from '@mui/material/Button';
 import { useHistory } from 'react-router';
 
 export function Header({ title }) {
@@ -38,12 +36,18 @@ export function Header({ title }) {
         </nav>
       </div>
       <div className="rightArea">
-      <FormControl className="formControl">
         <div className="searchContainer">
           <input className="searchInput" placeholder="Search" value={ searchInput } onChange={ (e) => setSearchInput(e.target.value) } />
-          <Button id="searchButton" onClick={ (e) => search() } disabled={ !searchInput.trim() } className="button" variant="outlined" type="submit"><i className="fa fa-search" aria-hidden="true"></i></Button>
+          <button id="searchButton" onClick={ (e) => {
+            if (searchInput.trim() !== "") {
+              search()
+            }
+            else {
+              alert("Please enter valid input")
+              setSearchInput("");
+            }
+          } } className="button" type="submit">Search</button>
         </div>
-        </FormControl>
       </div>
     </header>
   );
