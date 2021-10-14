@@ -59,6 +59,10 @@ header {
   outline: 3px solid rgba(192, 226, 255, 0.7);
 }
 
+#searchButton {
+  padding: 10px !important;
+}
+
 /* Media queries for responsiveness starts here */
 
 @media screen and (max-width: 1000px) {
