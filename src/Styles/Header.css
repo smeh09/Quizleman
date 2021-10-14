@@ -58,3 +58,30 @@ header {
 .searchInput:focus {
   outline: 3px solid rgba(192, 226, 255, 0.7);
 }
+
+/* Media queries for responsiveness starts here */
+
+@media screen and (max-width: 1000px) {
+  header {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  .leftArea {
+    margin-bottom: 30px;
+    flex-direction: column;
+  }
+  .navList {
+    margin-top: 15px;
+    padding-left: 0 !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .searchContainer {
+    width: 300px;
+  }
+  .searchInput {
+    margin-right: 0 !important;
+    padding: 7px 10px !important;
+  }
+}
