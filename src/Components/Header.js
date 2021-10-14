@@ -4,13 +4,17 @@ import PropTypes from "prop-types";
 import "../Styles/Header.css";
 import FormControl from '@mui/material/FormControl';
 import Button from '@mui/material/Button';
+import { useHistory } from 'react-router';
 
 export function Header({ title }) {
 
   const [ searchInput, setSearchInput ] = useState("")
 
-  const handleSubmit = () => {
+  const history = useHistory();
 
+  const search = () => {
+    history.push(`/quizzes?quiz=${searchInput}`);
+    setSearchInput("");
   }
 
   return (
@@ -37,7 +41,7 @@ export function Header({ title }) {
       <FormControl className="formControl">
         <div className="searchContainer">
           <input className="searchInput" placeholder="Search" value={ searchInput } onChange={ (e) => setSearchInput(e.target.value) } />
-          <Button onClick={ (e) => handleSubmit() } disabled={ !searchInput.trim() } className="button" variant="outlined" type="submit">Search</Button>
+          <Button onClick={ (e) => search() } disabled={ !searchInput.trim() } className="button" variant="outlined" type="submit">Search</Button>
         </div>
         </FormControl>
       </div>

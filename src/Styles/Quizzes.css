@@ -1,6 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 .quizzes {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   margin: 50px 20px;
+}
+
+.results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  flex-direction: column;
+}
+.noResultsFoundImg {
+  width: 512px;
+}
+
+.italic {
+  font-family: Poppins;
+  font-style: italic;
 }
