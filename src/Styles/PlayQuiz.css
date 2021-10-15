@@ -78,3 +78,18 @@
     margin: 30px 2px;
   }
 }
+
+.scoreContainer {
+  text-align: center;
+  width: 350px;
+  height: 350px;
+  margin: 100px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 5px;
+}
+
+h1 {
+  margin-bottom: 50px;
+}

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import { useParams, useLocation } from "react-router-dom";
 import getAPIResult from "../Modules/GetAPIResult";
+import Button from '@mui/material/Button';
 import "../Styles/PlayQuiz.css";
 
 export function PlayQuiz() {
@@ -12,6 +13,7 @@ export function PlayQuiz() {
   const [ currentQuestion, setCurrentQuestion ] = useState("");
   const [ currentQuestionOptions, setCurrentQuestionOptions ] = useState([]);
   const [ currentCorrectOption, setCurrentCorrectOption ] = useState("");
+  const [ score, setScore ] = useState(0);
 
   const params = useParams();
   const quizId = params.id;
@@ -22,25 +24,46 @@ export function PlayQuiz() {
   const difficulty = params2.get("difficulty");
 
   useEffect(() => {
-    const url = `https://opentdb.com/api.php?amount=10&category=${quizId}&difficulty=${difficulty}&type=multiple`;
+    const url = `https://opentdb.com/api.php?amount=5&category=${quizId}&difficulty=${difficulty}&type=multiple`;
     async function getData() {
-      let data = await getAPIResult(url);
-      data = data.results;
-      setQuizData(data);
-      setCurrentQuestion(data[quizNum].question);
-      const options = [...data[quizNum]["incorrect_answers"], data[quizNum]["correct_answer"]];
-      setCurrentQuestionOptions(options);
-      setCurrentCorrectOption(data[quizNum]["correct_answer"]);
+      if (quizData.length === 0) {
+        let data = await getAPIResult(url);
+        data = data.results;
+        setQuizData(data);
+      }
+      else {
+        if (quizNum !== quizData.length) {
+          setQuizData(quizData);
+          setCurrentQuestion(quizData[quizNum].question);
+          const options = [...quizData[quizNum]["incorrect_answers"], quizData[quizNum]["correct_answer"]];
+          setCurrentQuestionOptions(options);
+          setCurrentCorrectOption(quizData[quizNum]["correct_answer"]);
+        }
+      }
     }
     getData();
-  }, [difficulty, quizId, quizNum, setQuizData, setCurrentQuestionOptions]);
+  }, [difficulty, quizId, quizNum, setQuizData, setCurrentQuestionOptions, quizData]);
 
-  const handleCheck = (option) => {
+  const wait = (amount = 0) => new Promise(resolve => setTimeout(resolve, amount));
+
+  const handleCheck = async (option) => {
+
+    const optionEl = document.getElementById(option);
+    const oldBg = optionEl.style.backgroundColor;
+
     if (option === currentCorrectOption) {
-      console.log("correct answer! ")
+      setScore(score + 10);
+      optionEl.style.backgroundColor = "rgb(45, 224, 123)";
+      await wait(1000);
+      optionEl.style.backgroundColor = oldBg;
     }
     else {
-      console.log("wrong answer");
+      optionEl.style.backgroundColor = "rgb(255, 97, 97)";
+      await wait(1000);
+      optionEl.style.backgroundColor = oldBg;
+    }
+    if (quizNum !== quizData.length) {
+      setQuizNum(quizNum + 1)
     }
   }
 
@@ -50,23 +73,32 @@ export function PlayQuiz() {
     )
   }
   else {
-    return (
-      <div className="playQuiz">
-        <div className="playQuizTop">
-          <h1 className='question' dangerouslySetInnerHTML={{ __html: currentQuestion }}></h1>
-        </div>
-        <div className="quizBottom">
-          <div className="options">
-            { currentQuestionOptions.map(option => {
-              return (
-                <div onClick={ () => handleCheck(option) } key={ option } className="option">
-                  { option }
-                </div>
-              )
-            }) }
+    if (quizNum !== quizData.length) {
+      return (
+        <div className="playQuiz">
+          <div className="playQuizTop">
+            <h1 className='question' dangerouslySetInnerHTML={{ __html: currentQuestion }}></h1>
+          </div>
+          <div className="quizBottom">
+            <div className="options">
+              { currentQuestionOptions.map(option => {
+                return (
+                  <div dangerouslySetInnerHTML={{ __html: option }} id={ option } onClick={ () => handleCheck(option) } key={ option } className="option">
+                  </div>
+                )
+              }) }
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
+    else {
+      return (
+        <div className="scoreContainer">
+          <h1>Your score : { score }</h1>
+          <Button variant="contained" className="button">Store</Button>
+        </div>
+      )
+    }
   }
 }
