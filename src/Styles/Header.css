@@ -61,6 +61,7 @@ header {
 }
 
 .searchInput:focus {
+  border: 1.3px solid rgb(81, 162, 255);
   outline: 3.5px solid rgba(0, 119, 255, 0.35);
 }
 
