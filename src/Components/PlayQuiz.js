@@ -35,7 +35,13 @@ export function PlayQuiz() {
         if (quizNum !== quizData.length) {
           setQuizData(quizData);
           setCurrentQuestion(quizData[quizNum].question);
-          const options = [...quizData[quizNum]["incorrect_answers"], quizData[quizNum]["correct_answer"]];
+          const options = [...quizData[quizNum].incorrect_answers];
+          let answer = Math.floor(Math.random() * 4) + 1;
+          options.splice(
+              answer - 1,
+              0,
+              quizData[quizNum].correct_answer
+          );
           setCurrentQuestionOptions(options);
           setCurrentCorrectOption(quizData[quizNum]["correct_answer"]);
         }
@@ -67,6 +73,14 @@ export function PlayQuiz() {
     }
   }
 
+  const saveScore = () => {
+    localStorage.setItem('scores', {
+      username,
+      score,
+    });
+    alert("Score saved succesfully! ");
+  }
+
   if (quizData.length === 0) {
     return (
       <div className="loader"></div>
@@ -96,7 +110,7 @@ export function PlayQuiz() {
       return (
         <div className="scoreContainer">
           <h1>Your score : { score }</h1>
-          <Button variant="contained" className="button">Store</Button>
+          <Button onClick={ () => saveScore(score) } variant="contained" className="button">Store</Button>
         </div>
       )
     }
